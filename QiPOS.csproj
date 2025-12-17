@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <LangVersion>9.0</LangVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>7.10.3077</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AB42714B-A4BB-40D8-936B-C280E188D943}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>QiPOS.ico</ApplicationIcon>
+    <AssemblyKeyContainerName />
+    <AssemblyName>QiPOS</AssemblyName>
+    <AssemblyOriginatorKeyFile />
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>QiPOS</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>QiPOS.Program</StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>0.0</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile />
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile />
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn />
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>SecurityRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile />
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile />
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn />
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib">
+      <Name>mscorlib</Name>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="FrmPos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Data.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Events.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\FrmConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\RefundService.cs" />
+    <Compile Include="Sales\SaleService.cs" />
+    <Compile Include="Sales\StockService.cs" />
+    <Compile Include="Utilities\CurrencyUtil.cs" />
+    <Compile Include="Utilities\DisplayPoleUtil.cs" />
+    <Compile Include="Utilities\ErrorLogWriter.cs" />
+    <Compile Include="UI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\DisplayPoleSymbols.cs" />
+    <Compile Include="Utilities\FrmStockEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\UIStyles.cs" />
+    <Compile Include="Utilities\\button.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Utilities\\CalendarColumn.cs" />
+    <Compile Include="Utilities\\ConfigurationReader.cs" />
+    <Compile Include="Utilities\\Connect.cs" />
+    <Compile Include="Utilities\\DateRange.cs" />
+    <Compile Include="Utilities\\FrmDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\\FrmDefineShortcut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\\FrmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\\FrmMenuName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\\FrmNewCards.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\\FrmNewItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\\FrmSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\\FrmShortcut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\\PrintReceiptCls.cs" />
+    <Compile Include="Utilities\\RawPrinterHelper.cs" />
+    <Compile Include="Reports\\FrmCash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\\FrmMag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\\FrmPrevSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\\FrmProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\\FrmStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\\FrmSubagent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\\FrmSubagentDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\FrmPaperTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\FrmTransactions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\\GridPrinter.cs" />
+    <Compile Include="Reports\\MagList.cs" />
+    <Compile Include="Reports\\MagRecord.cs" />
+    <EmbeddedResource Include="FrmPos.resx">
+      <DependentUpon>FrmPos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrmMag.resx">
+      <DependentUpon>FrmMag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrmStatistics.resx">
+      <DependentUpon>FrmStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrmSubagentDetails.resx">
+      <DependentUpon>FrmSubagentDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrmPaperTemplate.resx">
+      <DependentUpon>FrmPaperTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrmTransactions.resx">
+      <DependentUpon>FrmTransactions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\button.resx">
+      <DependentUpon>button.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\FrmConfig.resx">
+      <DependentUpon>FrmConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrmCash.resx">
+      <DependentUpon>FrmCash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrmPrevSale.resx">
+      <DependentUpon>FrmPrevSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrmProducts.resx">
+      <DependentUpon>FrmProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrmSubagent.resx">
+      <DependentUpon>FrmSubagent.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\FrmDefine.resx">
+      <DependentUpon>FrmDefine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\FrmDefineShortcut.resx">
+      <DependentUpon>FrmDefineShortcut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\FrmMenu.resx">
+      <DependentUpon>FrmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\FrmMenuName.resx">
+      <DependentUpon>FrmMenuName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\FrmNewCards.resx">
+      <DependentUpon>FrmNewCards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\FrmNewItem.resx">
+      <DependentUpon>FrmNewItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\FrmSearch.resx">
+      <DependentUpon>FrmSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\FrmShortcut.resx">
+      <DependentUpon>FrmShortcut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\FrmStockEditor.resx">
+      <DependentUpon>FrmStockEditor.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="QiPOS.ico" />
+    <Content Include="Resources\30_dollar.jpg" />
+    <Content Include="Resources\40_dollar.jpg" />
+    <Content Include="Resources\50_dollar.jpg" />
+    <None Include="app.config" />
+    <None Include="Resources\20_dollar.jpg" />
+    <None Include="Resources\10_dollar.jpg" />
+    <None Include="Resources\100_dollar.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent />
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
