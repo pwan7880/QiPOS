@@ -277,7 +277,7 @@ namespace QiPOS
         /// </summary>
         public void EnterConfig()
         {
-            FrmConfig form = new FrmConfig(currentUser);
+            FrmConfig form = new FrmConfig();
             form.Show();
             CheckCards = form.checkCardsEnabled;
         }
