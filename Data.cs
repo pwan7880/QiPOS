@@ -164,10 +164,11 @@ namespace QiPOS
             tmpAccNo = acc["acc_number"].ToString();
             tmpRate = Convert.ToDecimal(acc["markup_rate"]);
 
-            if (refundFlag)
-                tmpRate = tmpRate >= 0 ? -1 : 1;
-
+            //if (refundFlag)
+            //    tmpRate = tmpRate >= 0 ? -1 : 1;
+            ErrorLogWriter.Instance.Log($"Loaded Category Account: {tmpAccNo} - {lblDesc.Text} with Markup Rate: {tmpRate}");
             lblDesc.ForeColor = tmpRate >= 0 ? Color.DarkBlue : Color.Red;
+            txtAmount.ForeColor = tmpRate >= 0 ? Color.DarkBlue : Color.Red;
             txtAmount.Text = string.Format(UIStyles.CurrencyFormat, 0);
             txtAmount.Focus();
         }

@@ -8,7 +8,6 @@ namespace QiPOS
 {
     public partial class FrmPos : Form
     {
-
         /// <summary>
         /// prepare to start a new sale        
         /// </summary>
@@ -34,7 +33,6 @@ namespace QiPOS
         /// <param name="tender"></param>
         private void ChangeNote(int tender)
         {
-
             if (dgItemList.Rows.Count == 0)
             {
                 return;
@@ -181,10 +179,8 @@ namespace QiPOS
             timerClean.Enabled = false;
         }
 
-        private static Decimal CurrencyInputValidation(System.Windows.Forms.TextBox txtBox, KeyPressEventArgs e)
+        private Decimal CurrencyInputValidation(System.Windows.Forms.TextBox txtBox, KeyPressEventArgs e)
         {
-            // TODO: what is tmpRate for?
-            decimal tmpRate = new decimal(0);
             Decimal num = CurrencyUtil.StringToDecimalValidation(txtBox.Text, e);
             if (tmpRate < new Decimal(0) && num > new Decimal(0))
                 num = new Decimal(0) - num;
@@ -285,7 +281,7 @@ namespace QiPOS
             catch (Exception ex)
             {
                 string message = ex.Message;
-                Console.WriteLine(message);
+                ErrorLogWriter.Instance.Log("BtnCancel_Click error "+ message);
             }
         }
 

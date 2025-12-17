@@ -279,11 +279,22 @@ namespace QiPOS
         }
         private void TxtAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (tmpRate < 0) //negative case
+            { 
+                if (!txtAmount.Text.StartsWith("-"))
+                txtAmount.Text = "-" + txtAmount.Text;
+            }
             try
             {
                 if ((int)e.KeyChar == 13 && txtAmount.Text != UIStyles.ZeroDollarString)
                 {
+                    bool negativeFlag = false;
+                    if (tmpRate < 0)
+                    {
+                        negativeFlag = true;                        
+                    }
                     Decimal num1 = CurrencyUtil.SafeToDecimal(txtAmount.Text);
+
                     bool flag = false;
                     if (num1 > new Decimal(500))
                     {
@@ -329,8 +340,7 @@ namespace QiPOS
             {
 
                 string message = ex.Message;
-                //int num = (int)MessageBox.Show("Amount Input Exception: " + (ex.Message).ToString());
-                Console.WriteLine(message);
+                ErrorLogWriter.Instance.Log(ex, "Error in TxtAmount_KeyPress: " + message);
                 StartNewSale();
             }
         }

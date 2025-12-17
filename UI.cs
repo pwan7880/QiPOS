@@ -92,7 +92,7 @@ namespace QiPOS
         {
             try
             {
-                RawPrinterHelper.SendStringToPrinter(printerNameStr, "\x1Bx70\x00\x80\x80");
+                RawPrinterHelper.SendStringToPrinter(printerNameStr, "\x001Bp\0 \x0080"); //opens till
             }
             catch (Exception ex)
             {
