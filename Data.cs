@@ -147,7 +147,7 @@ namespace QiPOS
             row["GST_paid"] = gstPaid * quantity;
             row["sale_date"] = now.ToString("yyyy-MM-dd");
             row["sale_time"] = now.ToString("HH:mm:ss");
-            row["user_id"] = currentUser?.Id ?? 0;
+            row["user_id"] = 0;
             row["seq_id"] = CurrentTable.Rows.Count + 1;
 
             return row;

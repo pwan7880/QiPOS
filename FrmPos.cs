@@ -98,16 +98,14 @@ namespace QiPOS
         private Label VersionLabel;
         private CustomButton customButton1;
         private int supplierIndexCards = 0;
-        private readonly UserAccount currentUser;
 
 
         #endregion declared 
         /// <summary>
         /// new version with sale service and other improvements
         /// </summary>
-        public FrmPos(UserAccount user)
+        public FrmPos()
         {
-            currentUser = user ?? new UserAccount { Id = 0, Name = "Unknown", Priority = int.MaxValue };
             // Initialize the connection and services, check if db exists
             try
             {
