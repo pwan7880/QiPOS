@@ -7,6 +7,7 @@ namespace QiPOS
     {
         private Button BtnClose;
         private Button BtnSave;
+        private Button BtnManageUsers;
         private Label label1;
         private Label label10;
         private Label label11;
@@ -32,8 +33,10 @@ namespace QiPOS
         private CheckBox checkBoxCards;
         private TextBox txtTel;
         public bool checkCardsEnabled = false;
-        public FrmConfig()
+        private readonly UserAccount currentUser;
+        public FrmConfig(UserAccount user)
         {
+            currentUser = user ?? new UserAccount { Id = 0, Name = "Unknown", Priority = int.MaxValue };
             InitializeComponent();
             Location = new System.Drawing.Point(1, 30);
         }
@@ -57,6 +60,9 @@ namespace QiPOS
             this.txtTel.Text = companyData.Telephone;
             this.txtFax.Text = companyData.Fax;
             this.txtEmail.Text = companyData.Email;
+
+            if (BtnManageUsers != null)
+                BtnManageUsers.Enabled = currentUser.IsAdmin;
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
@@ -88,6 +94,14 @@ namespace QiPOS
             }
         }
 
+        private void BtnManageUsers_Click(object sender, EventArgs e)
+        {
+            using (FrmUserManagement form = new FrmUserManagement(currentUser))
+            {
+                form.ShowDialog(this);
+            }
+        }
+
         private void InitializeComponent()
         {
             this.lblIns = new System.Windows.Forms.Label();
@@ -116,6 +130,7 @@ namespace QiPOS
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxCards = new System.Windows.Forms.CheckBox();
+            this.BtnManageUsers = new System.Windows.Forms.Button();
             this.pnConfig.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -132,6 +147,7 @@ namespace QiPOS
             // pnConfig
             // 
             this.pnConfig.Controls.Add(this.checkBoxCards);
+            this.pnConfig.Controls.Add(this.BtnManageUsers);
             this.pnConfig.Controls.Add(this.txtDisplay);
             this.pnConfig.Controls.Add(this.txtPrinter);
             this.pnConfig.Controls.Add(this.label14);
@@ -384,9 +400,20 @@ namespace QiPOS
             this.checkBoxCards.TabIndex = 28;
             this.checkBoxCards.Text = "Cards";
             this.checkBoxCards.UseVisualStyleBackColor = true;
-            // 
+            //
+            // BtnManageUsers
+            //
+            this.BtnManageUsers.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnManageUsers.Location = new System.Drawing.Point(54, 387);
+            this.BtnManageUsers.Name = "BtnManageUsers";
+            this.BtnManageUsers.Size = new System.Drawing.Size(188, 43);
+            this.BtnManageUsers.TabIndex = 35;
+            this.BtnManageUsers.Text = "Manage Users";
+            this.BtnManageUsers.UseVisualStyleBackColor = true;
+            this.BtnManageUsers.Click += new System.EventHandler(this.BtnManageUsers_Click);
+            //
             // FrmConfig
-            // 
+            //
             this.ClientSize = new System.Drawing.Size(987, 512);
             this.Controls.Add(this.pnConfig);
             this.Controls.Add(this.lblIns);

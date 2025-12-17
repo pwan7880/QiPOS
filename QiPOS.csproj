@@ -122,6 +122,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Models\UserAccount.cs" />
     <Compile Include="FrmPos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +138,13 @@
     <Compile Include="Utilities\FrmConfig.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Utilities\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\FrmUserManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\LoginService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -146,6 +154,7 @@
     <Compile Include="Sales\RefundService.cs" />
     <Compile Include="Sales\SaleService.cs" />
     <Compile Include="Sales\StockService.cs" />
+    <Compile Include="Utilities\PasswordHasher.cs" />
     <Compile Include="Utilities\CurrencyUtil.cs" />
     <Compile Include="Utilities\DisplayPoleUtil.cs" />
     <Compile Include="Utilities\ErrorLogWriter.cs" />
@@ -188,6 +197,7 @@
     <Compile Include="Utilities\\FrmShortcut.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Utilities\UserRepository.cs" />
     <Compile Include="Utilities\\PrintReceiptCls.cs" />
     <Compile Include="Utilities\\RawPrinterHelper.cs" />
     <Compile Include="Reports\\FrmCash.cs">
