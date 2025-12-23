@@ -31,7 +31,9 @@ namespace QiPOS
                     dgItemList.FirstDisplayedScrollingRowIndex  = dgItemList.Rows.Count - 1;
                 
             }
-            catch (DatabaseUnavailableException ex) { Console.WriteLine($"Database unavailable error: {ex.Message}"); }
+            catch (DatabaseUnavailableException ex) { 
+                ErrorLogWriter.Instance.Log(ex, "Database unavailable during POS initialization");            
+            }
             catch (SqlException ex)
             {
                 MessageBox.Show($"Database error: {ex.Message}\nInner Exception: {ex.InnerException?.Message}", "Initialization Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

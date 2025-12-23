@@ -595,8 +595,7 @@ namespace QiPOS
                 }
                 catch (FormatException ex)
                 {
-                    string error = ex.Message;
-                    Console.WriteLine(error);
+                    ErrorLogWriter.Instance.Log("Date Parsing Error: " + ex.Message);
                     DateTime now = DateTime.Now;
                     e.Value = now;
                     e.ParsingApplied = true;

@@ -40,7 +40,7 @@ namespace QiPOS
             }
 
             cachedConnectionString = connStr;
-            Console.WriteLine($"Loaded connection string from App.config: {connStr}");
+            //Console.WriteLine($"Loaded connection string from App.config: {connStr}");
             return connStr;
         }
         public void Close()
@@ -120,7 +120,7 @@ namespace QiPOS
             {
                 if (e1.Data.Contains("Dynamic SQL"))
                 {
-                    Console.WriteLine("issues ");
+                    ErrorLogWriter.Instance.Log("Dynamic SQL error in UpdateTable: " + e1.Message);
                 }
             }
         }
@@ -211,7 +211,7 @@ namespace QiPOS
                     using (var command = new SqlCommand(backupSql, connection))
                     {
                         command.ExecuteNonQuery();
-                        Console.WriteLine($"Backup completed: {backupFile}");
+                        //Console.WriteLine($"Backup completed: {backupFile}");
                     }
                 }
                 catch (Exception ex)
@@ -229,36 +229,36 @@ namespace QiPOS
                 {
                     if (parameters != null && parameters.Length > 0)
                     {
-                        Console.WriteLine($"Parameters for {spName}:");
+                        //Console.WriteLine($"Parameters for {spName}:");
                         foreach (var param in parameters)
                         {
-                            Console.WriteLine($"  {param.ParameterName} = {param.Value ?? "NULL"}");
+                          //  Console.WriteLine($"  {param.ParameterName} = {param.Value ?? "NULL"}");
                             cmd.Parameters.AddWithValue(param.ParameterName, param.Value ?? DBNull.Value);
                         }
                     }
                     else
                     {
-                        Console.WriteLine($"No parameters for {spName}");
+                        // Console.WriteLine($"No parameters for {spName}");
                     }
                     var adapter = new SqlDataAdapter(cmd);
                     var table = new DataTable();
                     try
                     {
                         string currentUser = WindowsIdentity.GetCurrent()?.Name ?? "Unknown";
-                        Console.WriteLine($"Attempting connection as: {currentUser}, Initial Database: {conn.Database}");
+                        //Console.WriteLine($"Attempting connection as: {currentUser}, Initial Database: {conn.Database}");
                         conn.Open();
-                        Console.WriteLine($"Connected to: {conn.DataSource}, Database: {conn.Database}");
+                        //Console.WriteLine($"Connected to: {conn.DataSource}, Database: {conn.Database}");
                         adapter.Fill(table);
-                        Console.WriteLine($"Rows returned from {spName}: {table.Rows.Count}");
+                        //Console.WriteLine($"Rows returned from {spName}: {table.Rows.Count}");
                         foreach (DataRow row in table.Rows)
                         {
-                            Console.WriteLine("Row data:");
+                          //  Console.WriteLine("Row data:");
                             foreach (DataColumn col in table.Columns)
                             {
                                 var value = row[col];
                                 // Handle potential format issues in logging
                                 string displayValue = value?.ToString() ?? "NULL";
-                                Console.WriteLine($"  {col.ColumnName} = {displayValue} (Type: {value?.GetType().Name ?? "null"})");
+                            //    Console.WriteLine($"  {col.ColumnName} = {displayValue} (Type: {value?.GetType().Name ?? "null"})");
                             }
                         }
                         //Console.WriteLine("QueryTableSP executed {SPName}, rows returned: {RowCount}", spName, table.Rows.Count);
@@ -271,8 +271,7 @@ namespace QiPOS
                         throw new DatabaseUnavailableException($"1 Failed to execute {spName}: {errorDetails}", ex);
                     }
                     catch (FormatException ex)
-                    {
-                        Console.WriteLine($"FormatException in QueryTableSP: {ex.Message}, StackTrace: {ex.StackTrace}");
+                    {                        
                         LogError(ex, $"Format error executing SP: {spName}");
                         return new DataTable(); // Return empty table on format error to prevent null
                     }
@@ -287,7 +286,7 @@ namespace QiPOS
         private void LogError(Exception ex, string context)
         {
             ErrorLogWriter.Instance.Log(ex.Message +" Database error in " + context);
-            Console.WriteLine($"Error in {context}: {ex.Message}");
+            
         }
 
         public void ExecuteNonQuerySP(string spName, params SqlParameter[] parameters)

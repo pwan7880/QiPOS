@@ -6,11 +6,12 @@ using System.Windows.Forms;
 namespace QiPOS
 {
     /// <summary>
-    /// updated 18/12/2025
+    /// updated 24/12/2025
     /// </summary>
     public partial class FrmPos : Form
     {
 
+        //Buglist: adding a new plu item throws null reference exception
         private static string version = "version 2025.12.24 build 0013";
         #region Initialisation objects
 
@@ -208,6 +209,7 @@ namespace QiPOS
             this.customButton9 = new QiPOS.CustomButton();
             this.customButton8 = new QiPOS.CustomButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.customButton1 = new QiPOS.CustomButton();
             this.ButtonPrevSales = new QiPOS.CustomButton();
             this.ButtonStats = new QiPOS.CustomButton();
             this.ButtonCash = new QiPOS.CustomButton();
@@ -227,7 +229,6 @@ namespace QiPOS
             this.dataGridViewSelectedCellColumn5 = new QiPOS.DataGridViewSelectedCellColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VersionLabel = new System.Windows.Forms.Label();
-            this.customButton1 = new QiPOS.CustomButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgItemList)).BeginInit();
             this.pnlCash.SuspendLayout();
             this.pnlDateBar.SuspendLayout();
@@ -396,7 +397,7 @@ namespace QiPOS
             this.txtAmount.ForeColor = System.Drawing.Color.DarkBlue;
             this.txtAmount.Location = new System.Drawing.Point(447, 505);
             this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(230, 60);
+            this.txtAmount.Size = new System.Drawing.Size(230, 40);
             this.txtAmount.TabIndex = 2;
             this.txtAmount.Text = "$0.00";
             this.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -427,7 +428,7 @@ namespace QiPOS
             this.txtCat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(240)))), ((int)(((byte)(205)))));
             this.txtCat.Location = new System.Drawing.Point(428, 505);
             this.txtCat.Name = "txtCat";
-            this.txtCat.Size = new System.Drawing.Size(10, 46);
+            this.txtCat.Size = new System.Drawing.Size(10, 31);
             this.txtCat.TabIndex = 1;
             this.txtCat.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtCat_KeyUp);
             // 
@@ -474,10 +475,11 @@ namespace QiPOS
             this.rBtnoCash.AutoSize = true;
             this.rBtnoCash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.rBtnoCash.Checked = true;
+            this.rBtnoCash.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.rBtnoCash.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rBtnoCash.Location = new System.Drawing.Point(0, 0);
             this.rBtnoCash.Name = "rBtnoCash";
-            this.rBtnoCash.Size = new System.Drawing.Size(141, 49);
+            this.rBtnoCash.Size = new System.Drawing.Size(99, 35);
             this.rBtnoCash.TabIndex = 1;
             this.rBtnoCash.TabStop = true;
             this.rBtnoCash.Text = "Eftpos";
@@ -487,6 +489,7 @@ namespace QiPOS
             // rbtCash
             // 
             this.rbtCash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.rbtCash.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.rbtCash.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtCash.Location = new System.Drawing.Point(112, 0);
             this.rbtCash.Name = "rbtCash";
@@ -532,7 +535,7 @@ namespace QiPOS
             this.DtpCurrent.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DtpCurrent.Location = new System.Drawing.Point(18, 71);
             this.DtpCurrent.Name = "DtpCurrent";
-            this.DtpCurrent.Size = new System.Drawing.Size(170, 55);
+            this.DtpCurrent.Size = new System.Drawing.Size(170, 39);
             this.DtpCurrent.TabIndex = 105;
             this.DtpCurrent.ValueChanged += new System.EventHandler(this.DtpCurrent_ValueChanged);
             // 
@@ -775,6 +778,23 @@ namespace QiPOS
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(927, 85);
             this.tableLayoutPanel1.TabIndex = 127;
+            // 
+            // customButton1
+            // 
+            this.customButton1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.customButton1.CornerRadius = 40;
+            this.customButton1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.customButton1.Location = new System.Drawing.Point(770, 0);
+            this.customButton1.Margin = new System.Windows.Forms.Padding(0);
+            this.customButton1.Name = "customButton1";
+            this.customButton1.RoundCorners = ((QiPOS.Corners)((((QiPOS.Corners.TopLeft | QiPOS.Corners.TopRight) 
+            | QiPOS.Corners.BottomLeft) 
+            | QiPOS.Corners.BottomRight)));
+            this.customButton1.Size = new System.Drawing.Size(150, 40);
+            this.customButton1.TabIndex = 130;
+            this.customButton1.Text = "Define";
+            this.customButton1.Click += new System.EventHandler(this.customButton1_Click);
             // 
             // ButtonPrevSales
             // 
@@ -1051,26 +1071,9 @@ namespace QiPOS
             this.VersionLabel.AutoSize = true;
             this.VersionLabel.Location = new System.Drawing.Point(7, 972);
             this.VersionLabel.Name = "VersionLabel";
-            this.VersionLabel.Size = new System.Drawing.Size(59, 20);
+            this.VersionLabel.Size = new System.Drawing.Size(47, 12);
             this.VersionLabel.TabIndex = 129;
             this.VersionLabel.Text = "version";
-            // 
-            // customButton1
-            // 
-            this.customButton1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.customButton1.CornerRadius = 40;
-            this.customButton1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.customButton1.Location = new System.Drawing.Point(770, 0);
-            this.customButton1.Margin = new System.Windows.Forms.Padding(0);
-            this.customButton1.Name = "customButton1";
-            this.customButton1.RoundCorners = ((QiPOS.Corners)((((QiPOS.Corners.TopLeft | QiPOS.Corners.TopRight) 
-            | QiPOS.Corners.BottomLeft) 
-            | QiPOS.Corners.BottomRight)));
-            this.customButton1.Size = new System.Drawing.Size(150, 40);
-            this.customButton1.TabIndex = 130;
-            this.customButton1.Text = "Define";
-            this.customButton1.Click += new System.EventHandler(this.customButton1_Click);
             // 
             // FrmPos
             // 

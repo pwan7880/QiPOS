@@ -123,8 +123,7 @@ namespace QiPOS
             }
             catch (Exception ex)
             {
-                string message = ex.Message;
-                Console.WriteLine(message);
+                ErrorLogWriter.Instance.Log(ex, "Error in BtnShortCut_Click: " + ex.Message);
             }
         }
 
@@ -156,8 +155,7 @@ namespace QiPOS
             }
             catch (Exception ex)
             {
-                string message = ex.Message;
-                Console.WriteLine(message);
+                ErrorLogWriter.Instance.Log(ex, "Error in BtnProducts_Click: " + ex.Message);
             }
         }
 
@@ -172,8 +170,7 @@ namespace QiPOS
             }
             catch (Exception ex)
             {
-                string message = ex.Message;
-                Console.WriteLine(message);
+                ErrorLogWriter.Instance.Log(ex, "Error in BtnTransactions_Click: " + ex.Message);
             }
         }
 
@@ -188,8 +185,7 @@ namespace QiPOS
             }
             catch (Exception ex)
             {
-                string message = ex.Message;
-                Console.WriteLine(message);
+                ErrorLogWriter.Instance.Log(ex, "Error in BtnPrevSale_Click: " + ex.Message);
             }
         }
         private void BtnCashForm_Click(object sender, EventArgs e)
@@ -203,8 +199,7 @@ namespace QiPOS
             }
             catch (Exception ex)
             {
-                string message = ex.Message;
-                Console.WriteLine(message);
+                ErrorLogWriter.Instance.Log(ex, "Error in BtnCashForm_Click: " + ex.Message);
             }
         }
 
@@ -432,9 +427,7 @@ namespace QiPOS
             }
             catch (Exception ex)
             {
-
-                string message = "ctrl key press " + ex.Message;
-                Console.WriteLine(message);
+                ErrorLogWriter.Instance.Log(ex, "Error in Control_KeyPress: " + ex.Message);
                 StartNewSale();
             }
         }
@@ -469,7 +462,8 @@ namespace QiPOS
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Delete Datagridview Row Exception: " + (ex.Message).ToString());
+                //Console.WriteLine("Delete Datagridview Row Exception: " + (ex.Message).ToString());
+                ErrorLogWriter.Instance.Log(ex, "Error in DgItemList_UserDeletedRow: " + ex.Message);
                 dgItemList.Rows.Clear();
                 dgItemList.Rows.Add(UIStyles.DefaultRowCount);
                 CopyToGrid();
@@ -566,8 +560,7 @@ namespace QiPOS
             }
             catch (Exception ex)
             {
-                string message = ex.Message;
-                Console.WriteLine(message);
+                ErrorLogWriter.Instance.Log(ex, "Error in DgItemList_CellLeave: " + ex.Message);
                 StartNewSale();
             }
         }
@@ -637,13 +630,13 @@ namespace QiPOS
                 }
                 else if (e.KeyCode == Keys.Enter && !string.IsNullOrEmpty(controlstring))
                 {
-                    Console.WriteLine("Applying control quantity: " + controlstring);
+                    //Console.WriteLine("Applying control quantity: " + controlstring);
                     ApplyControlQuantity();
                     return;
                 }
                 else if (e.Control)
                 {
-                    Console.WriteLine("Control key pressed: " + e.KeyCode);
+                    //Console.WriteLine("Control key pressed: " + e.KeyCode);
                     CaptureControlInput(e);
                 }
 

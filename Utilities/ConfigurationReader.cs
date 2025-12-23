@@ -138,7 +138,7 @@ namespace QiPOS
                 {
                     if (!Regex.IsMatch(data.LineDisplayPort, @"^COM\d+$", RegexOptions.IgnoreCase))
                     {
-                        Console.WriteLine("Warning: LineDisplayPort value appears malformed: " + data.LineDisplayPort);
+                        ErrorLogWriter.Instance.Log("Warning: LineDisplayPort value appears malformed: " + data.LineDisplayPort);
                         data.LineDisplayPort = ""; // blank it to avoid accidents
                     }
                 }

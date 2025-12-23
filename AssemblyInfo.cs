@@ -3,7 +3,7 @@
 // associated with an assembly.
 [assembly: System.CLSCompliant(true)]
 [assembly: System.Reflection.AssemblyTrademark("")]
-[assembly: System.Reflection.AssemblyCopyright("Copyright 2025")]
+[assembly: System.Reflection.AssemblyCopyright("Copyright 2011-2025")]
 [assembly: System.Reflection.AssemblyCompany("Yi An's Pty Ltd")]
 [assembly: System.Reflection.AssemblyProduct("QiPOS")]
 [assembly: System.Reflection.AssemblyConfiguration("")]

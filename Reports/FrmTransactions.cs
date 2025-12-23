@@ -24,7 +24,7 @@ namespace QiPOS
         private Label lblCat;
         private Label lblDate;
         private Label lblTotal;
-        private string queryStr;
+        //private string queryStr;
         private string reportPeriod;
         private string userCondiStr;
         private int which;

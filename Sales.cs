@@ -201,8 +201,7 @@ namespace QiPOS
             }
             catch (Exception ex)
             {
-                string message = ex.Message;
-                Console.WriteLine(message);
+                ErrorLogWriter.Instance.Log(ex.Message);
             }
         }
 
@@ -262,8 +261,7 @@ namespace QiPOS
             }
             catch (Exception ex)
             {
-                string message = ex.Message;
-                Console.WriteLine(message);
+                ErrorLogWriter.Instance.Log(ex, "BtnSum_Click error");                
             }
         }
         private void BtnCancel_Click(object sender, EventArgs e)

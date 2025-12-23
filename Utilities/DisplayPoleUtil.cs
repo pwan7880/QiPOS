@@ -71,8 +71,8 @@ namespace QiPOS
                 catch (Exception ex)
                 {
                     if (!_displayErrorLogged || (DateTime.Now - _lastDisplayErrorTime).TotalMinutes > 5)
-                    {
-                        ErrorLogWriter.Instance.Log(ex, $"Pole display error: {ex.Message}");
+                    {                        
+                        ErrorLogWriter.Instance.Log(ex, $"Pole display error: {portName} does not exist");
                         _lastDisplayErrorTime = DateTime.Now;
                         _displayErrorLogged = true;
                     }
