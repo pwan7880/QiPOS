@@ -52,6 +52,7 @@ namespace QiPOS
             if (txtAmount.Text != UIStyles.Empty)
             {
                 remainder = CurrencyUtil.SafeToDecimal(txtAmount.Text) - CurrencyUtil.SafeToDecimal(lblTotal.Text);
+                ErrorLogWriter.Instance.Log("CalculateChange - Remainder: " + remainder.ToString());
                 if (remainder < new Decimal(0))
                 {
                     lblChange.ForeColor = Color.Red;
@@ -65,7 +66,7 @@ namespace QiPOS
                 {
                     lblChange.ForeColor = Color.Purple;
                 }
-                lblChange.Text = string.Format(UIStyles.ChangeDefault, remainder);
+                lblChange.Text = "Change: $"+ remainder.ToString();
             }
             else
             {

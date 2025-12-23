@@ -6,13 +6,14 @@ using System.Windows.Forms;
 namespace QiPOS
 {
     /// <summary>
-    /// updated 7/12/2025
+    /// updated 18/12/2025
     /// </summary>
     public partial class FrmPos : Form
     {
+
+        private static string version = "version 2025.12.24 build 0013";
         #region Initialisation objects
-        
-        private static string version = "version 2025.12.07 build 0011";
+
         private Connect conn;
         private DataTable CurrentTable;
         private SaleService saleService;
