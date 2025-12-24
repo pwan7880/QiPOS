@@ -88,35 +88,26 @@ namespace QiPOS
 
             return insert;
         }
+        //Bug definitely happens here
         private void AddNewStock(string barcode)
         {
-            Connect connect = new Connect();
-            SqlParameter[] paramsArray = new SqlParameter[]
-                 {
-                    new SqlParameter("@Barcode", SqlDbType.NVarChar, 50) { Value = barcode ?? (object)DBNull.Value }
-                 };
-            connect.QueryTableSP("dbo.GetStockByBarcode", paramsArray);
-           
-            if (connect.aTable != null && connect.aTable.Rows.Count > 0)
+            var connect = new Connect();
+            var table = connect.QueryTableSP("dbo.GetStockByBarcode",
+                new SqlParameter("@Barcode", SqlDbType.NVarChar, 50) { Value = barcode ?? (object)DBNull.Value });
+
+            if (table != null && table.Rows.Count > 0)
             {
-                // Update dgItemList DataSource or Rows
-                dgItemList.DataSource = connect.aTable; // Or manually add rows if not bound
-                dgItemList.ClearSelection(); // Optional: Clear selection before scrolling
-                dgItemList.FirstDisplayedScrollingRowIndex = dgItemList.Rows.Count -1; // Scroll to last row
-                
+                // Avoid binding UI to a transient Connect.aTable; use CurrentTable
+                DataRow stockRow = table.Rows[0];
+                DataRow saleRow = CreateSaleRowFromStock(stockRow);
+                CurrentTable.Rows.Add(saleRow);
+                CopyToGrid();
+                StartNewSale();
             }
             else
             {
-                // Handle empty result (e.g., clear or show message)
-                dgItemList.DataSource = null;
-                dgItemList.Rows.Clear();
+                ErrorLogWriter.Instance.Log($"AddNewStock: no stock returned for barcode '{barcode}'");
             }
-
-            DataRow stockRow = connect.aTable.Rows[0];
-            DataRow saleRow = CreateSaleRowFromStock(stockRow);
-            CurrentTable.Rows.Add(saleRow);
-            CopyToGrid();
-            StartNewSale();
         }
         private DataRow CreateSaleRowFromStock(DataRow stockRow, int quantity = 1)
         {

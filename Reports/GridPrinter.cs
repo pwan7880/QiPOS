@@ -104,8 +104,8 @@ namespace QiPOS
                 string firstText = firstCell?.Value?.ToString() ?? "";
 
                 x = startX;
-                int? qty = null;
-                int? rt = null;
+                //int? qty = null;
+                //int? rt = null;
                 decimal? price = null;
                 if (visibleCols.Count > 1)
                 {
