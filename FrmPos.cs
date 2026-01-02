@@ -6,7 +6,7 @@ using System.Windows.Forms;
 namespace QiPOS
 {
     /// <summary>
-    /// updated 24/12/2025
+    /// updated 3/1/2025
     /// </summary>
     public partial class FrmPos : Form
     {
