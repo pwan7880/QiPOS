@@ -12,7 +12,7 @@ namespace QiPOS
     {
 
         //Buglist: adding a new plu item throws null reference exception
-        private static string version = "version 2025.12.24 build 0013";
+        private static string version = "version 2026.1.3 build 0014";
         #region Initialisation objects
 
         private Connect conn;
@@ -77,12 +77,6 @@ namespace QiPOS
         private CustomButton customButton7;
         private CustomButton ButtonOpen;
         private CustomButton BtnQuit;
-        private DataGridViewTextBoxColumn seq;
-        private DataGridViewSelectedCellColumn item;
-        private DataGridViewSelectedCellColumn unitPrice;
-        private DataGridViewSelectedCellColumn qty;
-        private DataGridViewSelectedCellColumn gst;
-        private DataGridViewTextBoxColumn total;
         private CustomButton ButtonHundred;
         private CustomButton customButton6;
         private CustomButton customButton8;
@@ -99,6 +93,12 @@ namespace QiPOS
         private CustomButton customButtonConfig;
         private Label VersionLabel;
         private CustomButton customButton1;
+        private DataGridViewTextBoxColumn seq;
+        private DataGridViewSelectedCellColumn item;
+        private DataGridViewSelectedCellColumn unitPrice;
+        private DataGridViewSelectedCellColumn qty;
+        private DataGridViewSelectedCellColumn gst;
+        private DataGridViewTextBoxColumn total;
         private int supplierIndexCards = 0;
 
 
@@ -159,23 +159,17 @@ namespace QiPOS
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgItemList = new System.Windows.Forms.DataGridView();
-            this.seq = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.item = new QiPOS.DataGridViewSelectedCellColumn();
-            this.unitPrice = new QiPOS.DataGridViewSelectedCellColumn();
-            this.qty = new QiPOS.DataGridViewSelectedCellColumn();
-            this.gst = new QiPOS.DataGridViewSelectedCellColumn();
-            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewSelectedCellColumn1 = new QiPOS.DataGridViewSelectedCellColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -229,6 +223,12 @@ namespace QiPOS
             this.dataGridViewSelectedCellColumn5 = new QiPOS.DataGridViewSelectedCellColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VersionLabel = new System.Windows.Forms.Label();
+            this.seq = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.item = new QiPOS.DataGridViewSelectedCellColumn();
+            this.unitPrice = new QiPOS.DataGridViewSelectedCellColumn();
+            this.qty = new QiPOS.DataGridViewSelectedCellColumn();
+            this.gst = new QiPOS.DataGridViewSelectedCellColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgItemList)).BeginInit();
             this.pnlCash.SuspendLayout();
             this.pnlDateBar.SuspendLayout();
@@ -256,6 +256,7 @@ namespace QiPOS
             this.qty,
             this.gst,
             this.total});
+            this.dgItemList.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgItemList.Location = new System.Drawing.Point(0, 0);
             this.dgItemList.MultiSelect = false;
             this.dgItemList.Name = "dgItemList";
@@ -272,71 +273,6 @@ namespace QiPOS
             this.dgItemList.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgItemList_RowEnter);
             this.dgItemList.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DgItemList_UserDeletedRow);
             this.dgItemList.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DgItemList_KeyUp);
-            // 
-            // seq
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.seq.DefaultCellStyle = dataGridViewCellStyle3;
-            this.seq.HeaderText = "";
-            this.seq.MinimumWidth = 50;
-            this.seq.Name = "seq";
-            this.seq.ReadOnly = true;
-            this.seq.Width = 50;
-            // 
-            // item
-            // 
-            this.item.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.item.HeaderText = "Items";
-            this.item.MinimumWidth = 10;
-            this.item.Name = "item";
-            this.item.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.item.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // unitPrice
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.unitPrice.DefaultCellStyle = dataGridViewCellStyle4;
-            this.unitPrice.HeaderText = "Unit Price";
-            this.unitPrice.MinimumWidth = 150;
-            this.unitPrice.Name = "unitPrice";
-            this.unitPrice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.unitPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.unitPrice.Width = 150;
-            // 
-            // qty
-            // 
-            this.qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.qty.DefaultCellStyle = dataGridViewCellStyle5;
-            this.qty.HeaderText = "Qty";
-            this.qty.MinimumWidth = 100;
-            this.qty.Name = "qty";
-            this.qty.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.qty.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.qty.Width = 200;
-            // 
-            // gst
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.gst.DefaultCellStyle = dataGridViewCellStyle6;
-            this.gst.HeaderText = "GST";
-            this.gst.MinimumWidth = 150;
-            this.gst.Name = "gst";
-            this.gst.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gst.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.gst.Width = 150;
-            // 
-            // total
-            // 
-            this.total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.total.DefaultCellStyle = dataGridViewCellStyle7;
-            this.total.FillWeight = 18F;
-            this.total.HeaderText = "Total";
-            this.total.MinimumWidth = 200;
-            this.total.Name = "total";
-            this.total.Width = 200;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1074,6 +1010,71 @@ namespace QiPOS
             this.VersionLabel.Size = new System.Drawing.Size(47, 12);
             this.VersionLabel.TabIndex = 129;
             this.VersionLabel.Text = "version";
+            // 
+            // seq
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.seq.DefaultCellStyle = dataGridViewCellStyle3;
+            this.seq.HeaderText = "";
+            this.seq.MinimumWidth = 50;
+            this.seq.Name = "seq";
+            this.seq.ReadOnly = true;
+            this.seq.Width = 50;
+            // 
+            // item
+            // 
+            this.item.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.item.HeaderText = "Items";
+            this.item.MinimumWidth = 10;
+            this.item.Name = "item";
+            this.item.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.item.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // unitPrice
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.unitPrice.DefaultCellStyle = dataGridViewCellStyle4;
+            this.unitPrice.HeaderText = "Unit Price";
+            this.unitPrice.MinimumWidth = 150;
+            this.unitPrice.Name = "unitPrice";
+            this.unitPrice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.unitPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.unitPrice.Width = 150;
+            // 
+            // qty
+            // 
+            this.qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.qty.DefaultCellStyle = dataGridViewCellStyle5;
+            this.qty.HeaderText = "Qty";
+            this.qty.MinimumWidth = 100;
+            this.qty.Name = "qty";
+            this.qty.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.qty.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.qty.Width = 200;
+            // 
+            // gst
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.gst.DefaultCellStyle = dataGridViewCellStyle6;
+            this.gst.HeaderText = "GST";
+            this.gst.MinimumWidth = 150;
+            this.gst.Name = "gst";
+            this.gst.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gst.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.gst.Width = 150;
+            // 
+            // total
+            // 
+            this.total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.total.DefaultCellStyle = dataGridViewCellStyle7;
+            this.total.FillWeight = 18F;
+            this.total.HeaderText = "Total";
+            this.total.MinimumWidth = 180;
+            this.total.Name = "total";
+            this.total.Width = 180;
             // 
             // FrmPos
             // 
