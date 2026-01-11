@@ -21,7 +21,7 @@ namespace QiPOS
         public const string CurrencyFormat = "{0:C}";
         public const string PointOfSale = "Point of Sale";
         public const string NotStockedItem = "Not Stocked Item";
-        public const string ZineReturnWeek = "Zine Return Week: ";
+        public const string ZineReturnWeek = "ARE Return Week: ";
         public const string DrawerOpenCommand = "\x1Bx70\x00\x80";
         public const string DefaultPrinterName = "CITIZEN CT-S310";
         public const string PoleDisplayClearCommand = "\f";

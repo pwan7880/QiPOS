@@ -6,13 +6,13 @@ using System.Windows.Forms;
 namespace QiPOS
 {
     /// <summary>
-    /// updated 3/1/2025
+    /// The main form for the Point of Sale application.
     /// </summary>
     public partial class FrmPos : Form
     {
 
         //Buglist: adding a new plu item throws null reference exception
-        private static string version = "version 2026.1.3 build 0014";
+        private static string version = "version 2026.1.5 build 0015";
         #region Initialisation objects
 
         private Connect conn;
