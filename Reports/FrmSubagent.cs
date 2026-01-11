@@ -1199,10 +1199,18 @@ namespace QiPOS
                         }
                     }
                 }
-
-                FrmMag frmMag = new FrmMag((int)lbInvNo.SelectedValue, in_rate);
-                AddOwnedForm(frmMag);
-                frmMag.Show();
+                if (lbInvNo.SelectedValue == null)
+                {
+                    FrmMag frmMagEmpty = new FrmMag(0, in_rate);
+                    AddOwnedForm(frmMagEmpty);
+                    frmMagEmpty.Show();
+                }
+                else
+                {
+                    FrmMag frmMag = new FrmMag((int)lbInvNo.SelectedValue, in_rate);
+                    AddOwnedForm(frmMag);
+                    frmMag.Show();
+                }
             }
             catch (SqlException ex)
             {
