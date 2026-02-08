@@ -333,13 +333,7 @@ namespace QiPOS
                 "pos_sale",
                 "pos_sale_cache",
                 "pos_sale_detail", 
-                "pos_stock",
-                "sub_agent",
-                "sub_inv_mag",
-                "sub_inv_paper_details",
-                "sub_inv_sum",
-                "sub_template",
-                "sub_template_details",
+                "pos_stock", 
                 "user_"
             };
 

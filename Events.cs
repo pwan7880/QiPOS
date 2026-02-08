@@ -648,14 +648,7 @@ namespace QiPOS
                 StartNewSale();
             }
         }
-
-        private void BtnSubagent_Click(object sender, EventArgs e)
-        {
-            FrmSubagent agentform = new FrmSubagent();
-            AddOwnedForm(agentform);
-            agentform.Show();
-        }
-
+         
         private void Rich_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (Control.ModifierKeys == Keys.Control)

@@ -193,9 +193,6 @@
     <Compile Include="Reports\\FrmCash.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reports\\FrmMag.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Reports\\FrmPrevSale.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,15 +200,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reports\\FrmStatistics.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reports\\FrmSubagent.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reports\\FrmSubagentDetails.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reports\FrmPaperTemplate.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reports\FrmTransactions.cs">
@@ -223,17 +211,8 @@
     <EmbeddedResource Include="FrmPos.resx">
       <DependentUpon>FrmPos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\FrmMag.resx">
-      <DependentUpon>FrmMag.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reports\FrmStatistics.resx">
       <DependentUpon>FrmStatistics.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\FrmSubagentDetails.resx">
-      <DependentUpon>FrmSubagentDetails.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\FrmPaperTemplate.resx">
-      <DependentUpon>FrmPaperTemplate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\FrmTransactions.resx">
       <DependentUpon>FrmTransactions.cs</DependentUpon>
@@ -257,10 +236,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\FrmProducts.resx">
       <DependentUpon>FrmProducts.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\FrmSubagent.resx">
-      <DependentUpon>FrmSubagent.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Utilities\FrmDefine.resx">
       <DependentUpon>FrmDefine.cs</DependentUpon>

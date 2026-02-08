@@ -12,7 +12,7 @@ namespace QiPOS
     {
 
         //Buglist: adding a new plu item throws null reference exception
-        private static string version = "version 2026.1.5 build 0015";
+        private static string version = "version 2026.2.8 build 0016";
         #region Initialisation objects
 
         private Connect conn;
@@ -61,7 +61,6 @@ namespace QiPOS
         private readonly int rownumber = 14;
         private readonly int gridHeight = 495;
         private int trans_id;
-        private CustomButton subagentButton;
         private CustomButton ButtonSearch;
         private CustomButton customButton3;
         private CustomButton ButtonShortcut;
@@ -159,17 +158,23 @@ namespace QiPOS
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgItemList = new System.Windows.Forms.DataGridView();
+            this.seq = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.item = new QiPOS.DataGridViewSelectedCellColumn();
+            this.unitPrice = new QiPOS.DataGridViewSelectedCellColumn();
+            this.qty = new QiPOS.DataGridViewSelectedCellColumn();
+            this.gst = new QiPOS.DataGridViewSelectedCellColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewSelectedCellColumn1 = new QiPOS.DataGridViewSelectedCellColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -213,7 +218,6 @@ namespace QiPOS
             this.ButtonSearch = new QiPOS.CustomButton();
             this.ButtonTransactions = new QiPOS.CustomButton();
             this.customButtonConfig = new QiPOS.CustomButton();
-            this.subagentButton = new QiPOS.CustomButton();
             this.BtnQuit = new QiPOS.CustomButton();
             this.customButton4 = new QiPOS.CustomButton();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -223,12 +227,6 @@ namespace QiPOS
             this.dataGridViewSelectedCellColumn5 = new QiPOS.DataGridViewSelectedCellColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VersionLabel = new System.Windows.Forms.Label();
-            this.seq = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.item = new QiPOS.DataGridViewSelectedCellColumn();
-            this.unitPrice = new QiPOS.DataGridViewSelectedCellColumn();
-            this.qty = new QiPOS.DataGridViewSelectedCellColumn();
-            this.gst = new QiPOS.DataGridViewSelectedCellColumn();
-            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgItemList)).BeginInit();
             this.pnlCash.SuspendLayout();
             this.pnlDateBar.SuspendLayout();
@@ -273,6 +271,71 @@ namespace QiPOS
             this.dgItemList.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgItemList_RowEnter);
             this.dgItemList.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DgItemList_UserDeletedRow);
             this.dgItemList.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DgItemList_KeyUp);
+            // 
+            // seq
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.seq.DefaultCellStyle = dataGridViewCellStyle3;
+            this.seq.HeaderText = "";
+            this.seq.MinimumWidth = 50;
+            this.seq.Name = "seq";
+            this.seq.ReadOnly = true;
+            this.seq.Width = 50;
+            // 
+            // item
+            // 
+            this.item.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.item.HeaderText = "Items";
+            this.item.MinimumWidth = 10;
+            this.item.Name = "item";
+            this.item.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.item.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // unitPrice
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.unitPrice.DefaultCellStyle = dataGridViewCellStyle4;
+            this.unitPrice.HeaderText = "Unit Price";
+            this.unitPrice.MinimumWidth = 150;
+            this.unitPrice.Name = "unitPrice";
+            this.unitPrice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.unitPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.unitPrice.Width = 150;
+            // 
+            // qty
+            // 
+            this.qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.qty.DefaultCellStyle = dataGridViewCellStyle5;
+            this.qty.HeaderText = "Qty";
+            this.qty.MinimumWidth = 100;
+            this.qty.Name = "qty";
+            this.qty.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.qty.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.qty.Width = 200;
+            // 
+            // gst
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.gst.DefaultCellStyle = dataGridViewCellStyle6;
+            this.gst.HeaderText = "GST";
+            this.gst.MinimumWidth = 150;
+            this.gst.Name = "gst";
+            this.gst.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gst.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.gst.Width = 150;
+            // 
+            // total
+            // 
+            this.total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.total.DefaultCellStyle = dataGridViewCellStyle7;
+            this.total.FillWeight = 18F;
+            this.total.HeaderText = "Total";
+            this.total.MinimumWidth = 180;
+            this.total.Name = "total";
+            this.total.Width = 180;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -333,7 +396,7 @@ namespace QiPOS
             this.txtAmount.ForeColor = System.Drawing.Color.DarkBlue;
             this.txtAmount.Location = new System.Drawing.Point(447, 505);
             this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(230, 40);
+            this.txtAmount.Size = new System.Drawing.Size(230, 60);
             this.txtAmount.TabIndex = 2;
             this.txtAmount.Text = "$0.00";
             this.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -364,7 +427,7 @@ namespace QiPOS
             this.txtCat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(240)))), ((int)(((byte)(205)))));
             this.txtCat.Location = new System.Drawing.Point(428, 505);
             this.txtCat.Name = "txtCat";
-            this.txtCat.Size = new System.Drawing.Size(10, 31);
+            this.txtCat.Size = new System.Drawing.Size(10, 46);
             this.txtCat.TabIndex = 1;
             this.txtCat.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtCat_KeyUp);
             // 
@@ -415,7 +478,7 @@ namespace QiPOS
             this.rBtnoCash.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rBtnoCash.Location = new System.Drawing.Point(0, 0);
             this.rBtnoCash.Name = "rBtnoCash";
-            this.rBtnoCash.Size = new System.Drawing.Size(99, 35);
+            this.rBtnoCash.Size = new System.Drawing.Size(140, 50);
             this.rBtnoCash.TabIndex = 1;
             this.rBtnoCash.TabStop = true;
             this.rBtnoCash.Text = "Eftpos";
@@ -471,7 +534,7 @@ namespace QiPOS
             this.DtpCurrent.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DtpCurrent.Location = new System.Drawing.Point(18, 71);
             this.DtpCurrent.Name = "DtpCurrent";
-            this.DtpCurrent.Size = new System.Drawing.Size(170, 39);
+            this.DtpCurrent.Size = new System.Drawing.Size(170, 55);
             this.DtpCurrent.TabIndex = 105;
             this.DtpCurrent.ValueChanged += new System.EventHandler(this.DtpCurrent_ValueChanged);
             // 
@@ -695,7 +758,6 @@ namespace QiPOS
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.Controls.Add(this.customButton1, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.ButtonPrevSales, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.ButtonStats, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.ButtonCash, 1, 0);
@@ -705,7 +767,7 @@ namespace QiPOS
             this.tableLayoutPanel1.Controls.Add(this.ButtonSearch, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.ButtonTransactions, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.customButtonConfig, 4, 1);
-            this.tableLayoutPanel1.Controls.Add(this.subagentButton, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.customButton1, 4, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 669);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -721,7 +783,7 @@ namespace QiPOS
             this.customButton1.CornerRadius = 40;
             this.customButton1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.customButton1.Location = new System.Drawing.Point(770, 0);
+            this.customButton1.Location = new System.Drawing.Point(616, 0);
             this.customButton1.Margin = new System.Windows.Forms.Padding(0);
             this.customButton1.Name = "customButton1";
             this.customButton1.RoundCorners = ((QiPOS.Corners)((((QiPOS.Corners.TopLeft | QiPOS.Corners.TopRight) 
@@ -885,23 +947,6 @@ namespace QiPOS
             this.customButtonConfig.Text = "Config";
             this.customButtonConfig.Click += new System.EventHandler(this.CustomButtonConfig_Click);
             // 
-            // subagentButton
-            // 
-            this.subagentButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.subagentButton.CornerRadius = 40;
-            this.subagentButton.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subagentButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.subagentButton.Location = new System.Drawing.Point(616, 0);
-            this.subagentButton.Margin = new System.Windows.Forms.Padding(0);
-            this.subagentButton.Name = "subagentButton";
-            this.subagentButton.RoundCorners = ((QiPOS.Corners)((((QiPOS.Corners.TopLeft | QiPOS.Corners.TopRight) 
-            | QiPOS.Corners.BottomLeft) 
-            | QiPOS.Corners.BottomRight)));
-            this.subagentButton.Size = new System.Drawing.Size(150, 40);
-            this.subagentButton.TabIndex = 128;
-            this.subagentButton.Text = "Subagent";
-            this.subagentButton.Click += new System.EventHandler(this.BtnSubagent_Click);
-            // 
             // BtnQuit
             // 
             this.BtnQuit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1007,74 +1052,9 @@ namespace QiPOS
             this.VersionLabel.AutoSize = true;
             this.VersionLabel.Location = new System.Drawing.Point(7, 972);
             this.VersionLabel.Name = "VersionLabel";
-            this.VersionLabel.Size = new System.Drawing.Size(47, 12);
+            this.VersionLabel.Size = new System.Drawing.Size(59, 20);
             this.VersionLabel.TabIndex = 129;
             this.VersionLabel.Text = "version";
-            // 
-            // seq
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.seq.DefaultCellStyle = dataGridViewCellStyle3;
-            this.seq.HeaderText = "";
-            this.seq.MinimumWidth = 50;
-            this.seq.Name = "seq";
-            this.seq.ReadOnly = true;
-            this.seq.Width = 50;
-            // 
-            // item
-            // 
-            this.item.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.item.HeaderText = "Items";
-            this.item.MinimumWidth = 10;
-            this.item.Name = "item";
-            this.item.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.item.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // unitPrice
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.unitPrice.DefaultCellStyle = dataGridViewCellStyle4;
-            this.unitPrice.HeaderText = "Unit Price";
-            this.unitPrice.MinimumWidth = 150;
-            this.unitPrice.Name = "unitPrice";
-            this.unitPrice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.unitPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.unitPrice.Width = 150;
-            // 
-            // qty
-            // 
-            this.qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.qty.DefaultCellStyle = dataGridViewCellStyle5;
-            this.qty.HeaderText = "Qty";
-            this.qty.MinimumWidth = 100;
-            this.qty.Name = "qty";
-            this.qty.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.qty.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.qty.Width = 200;
-            // 
-            // gst
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.gst.DefaultCellStyle = dataGridViewCellStyle6;
-            this.gst.HeaderText = "GST";
-            this.gst.MinimumWidth = 150;
-            this.gst.Name = "gst";
-            this.gst.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gst.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.gst.Width = 150;
-            // 
-            // total
-            // 
-            this.total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.total.DefaultCellStyle = dataGridViewCellStyle7;
-            this.total.FillWeight = 18F;
-            this.total.HeaderText = "Total";
-            this.total.MinimumWidth = 180;
-            this.total.Name = "total";
-            this.total.Width = 180;
             // 
             // FrmPos
             // 
